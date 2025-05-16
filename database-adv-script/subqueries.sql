@@ -7,7 +7,7 @@ WHERE
         GROUP BY
             property_id
         HAVING
-            AVG(rating) > 4
+            AVG(rating) > 4.0
     );
 
 SELECT *
