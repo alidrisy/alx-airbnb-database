@@ -8,7 +8,7 @@ User CASCADE;
 
 -- User table
 CREATE TABLE User (
-    user_id UUID PRIMARY KEY,
+    user_id VARCHAR(255) PRIMARY KEY,
     first_name VARCHAR(255) NOT NULL,
     last_name VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL UNIQUE,
@@ -22,8 +22,8 @@ CREATE TABLE User (
 
 -- Property table
 CREATE TABLE Property (
-    property_id UUID PRIMARY KEY,
-    host_id UUID NOT NULL,
+    property_id VARCHAR(255) PRIMARY KEY,
+    host_id VARCHAR(255) NOT NULL,
     name VARCHAR(255) NOT NULL,
     description TEXT NOT NULL,
     location VARCHAR(255) NOT NULL,
@@ -35,9 +35,9 @@ CREATE TABLE Property (
 
 -- Booking table
 CREATE TABLE Booking (
-    booking_id UUID PRIMARY KEY,
-    property_id UUID NOT NULL,
-    user_id UUID NOT NULL,
+    booking_id VARCHAR(255) PRIMARY KEY,
+    property_id VARCHAR(255) NOT NULL,
+    user_id VARCHAR(255) NOT NULL,
     start_date DATE NOT NULL,
     end_date DATE NOT NULL,
     total_price DECIMAL(10, 2) NOT NULL,
@@ -55,8 +55,8 @@ CREATE TABLE Booking (
 
 -- Payment table
 CREATE TABLE Payment (
-    payment_id UUID PRIMARY KEY,
-    booking_id UUID NOT NULL,
+    payment_id VARCHAR(255) PRIMARY KEY,
+    booking_id VARCHAR(255) NOT NULL,
     amount DECIMAL(10, 2) NOT NULL,
     payment_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     payment_method VARCHAR(20) NOT NULL CHECK (
@@ -71,9 +71,9 @@ CREATE TABLE Payment (
 
 -- Review table
 CREATE TABLE Review (
-    review_id UUID PRIMARY KEY,
-    property_id UUID NOT NULL,
-    user_id UUID NOT NULL,
+    review_id VARCHAR(255) PRIMARY KEY,
+    property_id VARCHAR(255) NOT NULL,
+    user_id VARCHAR(255) NOT NULL,
     rating INTEGER NOT NULL CHECK (
         rating >= 1
         AND rating <= 5
@@ -86,9 +86,9 @@ CREATE TABLE Review (
 
 -- Message table
 CREATE TABLE Message (
-    message_id UUID PRIMARY KEY,
-    sender_id UUID NOT NULL,
-    recipient_id UUID NOT NULL,
+    message_id VARCHAR(255) PRIMARY KEY,
+    sender_id VARCHAR(255) NOT NULL,
+    recipient_id VARCHAR(255) NOT NULL,
     message_body TEXT NOT NULL,
     sent_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT fk_message_sender FOREIGN KEY (sender_id) REFERENCES User (user_id),

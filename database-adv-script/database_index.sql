@@ -14,7 +14,7 @@ CREATE INDEX idx_review_property_id ON Review (property_id);
 
 CREATE INDEX idx_review_user_id ON Review (user_id);
 
-EXPLAIN
+EXPLAIN ANALYZE
 SELECT *
 FROM Booking
 WHERE
